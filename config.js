@@ -10,25 +10,27 @@ exports.config = {
     },*/
 
     suites: {
-        sampleTestCases: './e2e/test/smoke/sampleTest.js'
+        smoke: ['./e2e/test/smoke/sampleTest.js'],
+        regression:['./e2e/test/smoke/sampleTest.js']
+         
     },
-    allScriptTimeout: 60000,
+    allScriptTimeout: 60000, //The timeout in milliseconds for each script run on the browser
     multiCapabilities: [
         {
             browserName: "chrome",
         },
         {
-            browserName: "firefox",
+            //browserName: "firefox",
         }
     ],
 
     jasmineNodeOpts: {
         showcolors: true,
-        defaulttimeoutInterval: 60000
+        defaulttimeoutInterval: 60000 //countdown starts whenever a promise starts
     },
 
     onPrepare: function () {
         browser.manage().window().maximize();
-        browser.driver.get("https://angular.io");
+        
     }
 }
